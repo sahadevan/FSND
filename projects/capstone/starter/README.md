@@ -70,7 +70,7 @@ flask run --reload
 
 The `--reload` flag will detect file changes and restart the server automatically.
 
-### API Documentation
+## API Documentation
 
 `GET '/api/v1.0/movies'`
 
@@ -273,3 +273,17 @@ The `--reload` flag will detect file changes and restart the server automaticall
 ```
 
 ---
+
+## Testing
+
+To deploy the tests, run
+
+```bash
+python test_app.py
+```
+
+or
+
+```bash
+python -m unittest test_app.py
+```
