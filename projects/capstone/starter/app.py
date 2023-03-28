@@ -7,7 +7,7 @@ import json
 from dateutil import parser
 
 from models import setup_db, Movie, Actor, Cast
-from auth.auth import AuthError, requires_auth
+from auth.auth import AuthError, requires_auth, AUTH0_DOMAIN, API_AUDIENCE, AUTH0_CLIENT_ID, AUTH0_CALLBACK_URL
 
 def create_app(test_config=None):
   # create and configure the app
@@ -22,6 +22,10 @@ db = setup_db(APP)
 @APP.route('/')
 def index():
   return { 'HelloWorld' : 'Welcome to FSND capstone project...' }
+
+@APP.route('/auth')
+def authenticate():
+  return jsonify({ 'auth-url': f'https://{AUTH0_DOMAIN}/authorize?audience={API_AUDIENCE}&response_type=token&client_id={AUTH0_CLIENT_ID}&redirect_uri={AUTH0_CALLBACK_URL}' })
 
 @APP.route('/movies', methods=['GET'])
 @requires_auth('get:movies')

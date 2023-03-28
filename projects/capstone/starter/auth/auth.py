@@ -1,5 +1,6 @@
+import os
 import json
-from flask import request, _request_ctx_stack
+from flask import request
 from functools import wraps
 from jose import jwt
 from urllib.request import urlopen
@@ -7,9 +8,12 @@ from urllib.request import urlopen
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
-AUTH0_DOMAIN = 'dev-gz5tjefp2qw5ta7u.us.auth0.com'
-ALGORITHMS = ['RS256']
-API_AUDIENCE = 'casting'
+AUTH0_DOMAIN = os.getenv('AUTH0_DOMAIN','dev-gz5tjefp2qw5ta7u.us.auth0.com')
+ALGORITHMS = [os.getenv('ALGORITHMS','RS256')]
+API_AUDIENCE = os.getenv('API_AUDIENCE','casting')
+
+AUTH0_CLIENT_ID = os.getenv('AUTH0_CLIENT_ID', 'QDgll2Kz5legko3qqcZOQqvpn0ksolEi')
+AUTH0_CALLBACK_URL = os.getenv('AUTH0_CALLBACK_URL', 'http://127.0.0.1:5000/')
 
 ## AuthError Exception
 '''

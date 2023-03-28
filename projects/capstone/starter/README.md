@@ -45,6 +45,16 @@ pip install -r requirements.txt
 
 ### Set up the Database
 
+Set Database Environment variables
+
+```bash
+export DB_NAME="casting"
+```
+
+```bash
+export DB_PATH="postgresql+psycopg2://postgres@localhost:5432/casting"
+```
+
 With Postgres running, create a `casting` database:
 
 ```bash
@@ -275,6 +285,12 @@ The `--reload` flag will detect file changes and restart the server automaticall
 ---
 
 ## Testing
+
+In case if you want to run the test cases against separate DB use,
+
+```bash
+export DB_NAME="casting_test"
+```
 
 To deploy the tests, run
 
